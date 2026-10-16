@@ -1,6 +1,18 @@
-@Quarry.Api_HostAddress = http://localhost:5168
+@baseUrl = http://localhost:5168
 
-GET {{Quarry.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+POST {{baseUrl}}/api/query
+Content-Type: application/json
+
+{
+    "connectionString": "Data Source=:memory:",
+  "sql": "SELECT 1 AS Id, 'Noa Levi' AS FullName, NULL AS City"   
+}
 
 ###
+POST {{baseUrl}}/api/query
+Content-Type: application/json
+
+{
+  "connectionString": "Data Source=:memory:",
+  "sql": "SELECT * FROM Customers"
+}
