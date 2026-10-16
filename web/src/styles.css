@@ -1,0 +1,22 @@
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/jetbrains-mono";
+@import "tailwindcss";
+
+@theme{
+  --color-ink:#0A0D14;
+  --color-panel: #0F131D;
+  --color-raised: #161C2B;
+  --color-line: #1F2638;
+  --color-text: #E6EAF2;
+  --color-muted: #9AA4B8;
+  --color-accent: #4C7DFF;
+  --color-ok: #3DD68C;
+
+  --font-sans: "Geist Variable", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", monospace;
+
+}
+
+body {
+  @apply bg-ink text-text font-sans antialiased;
+}
