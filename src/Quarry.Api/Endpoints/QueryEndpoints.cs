@@ -17,18 +17,20 @@ namespace Quarry.Api.Endpoints
             group.MapPost("/",ExecuteQuery);
         }
 
-        private static async Task<IResult> ExecuteQuery(QueryRequest request ,IDatabaseProvider provider,CancellationToken token)
-        { 
-          try
-          {
-            var result = await provider.ExecuteAsync(request.ConnectionString ,request.Sql ,token);
-            return Results.Ok(result);
-          }
-          catch (DbException ex)
-          {
-             return Results.BadRequest(new {error  = ex.Message});
-            
-          }  
+        private static async Task<IResult> ExecuteQuery(QueryRequest request ,IServiceProvider service,CancellationToken token)
+        {
+            var provider = service.GetRequiredKeyedService<IDatabaseProvider>(request.Kind);
+
+            try
+            {
+                var result = await provider.ExecuteAsync(request.ConnectionString,request.Sql,token);
+                return Results.Ok(result);
+            }
+            catch (DbException ex)
+            {
+                
+                return Results.BadRequest(new {error = ex.Message});
+            }
         }
     }
 }

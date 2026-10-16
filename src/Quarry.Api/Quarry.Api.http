@@ -4,6 +4,7 @@ POST {{baseUrl}}/api/query
 Content-Type: application/json
 
 {
+    "kind":"Sqlite",
     "connectionString": "Data Source=:memory:",
   "sql": "SELECT 1 AS Id, 'Noa Levi' AS FullName, NULL AS City"   
 }
@@ -13,6 +14,17 @@ POST {{baseUrl}}/api/query
 Content-Type: application/json
 
 {
+    "kind":"Sqlite",
   "connectionString": "Data Source=:memory:",
   "sql": "SELECT * FROM Customers"
+}
+
+####
+POST {{baseUrl}}/api/query
+Content-Type: application/json
+
+{
+  "kind": "SqlServer",
+  "connectionString": "Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;TrustServerCertificate=true",
+  "sql": "SELECT name, database_id, create_date FROM sys.databases"
 }
