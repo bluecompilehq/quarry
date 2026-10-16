@@ -1,0 +1,6 @@
+@Quarry.Api_HostAddress = http://localhost:5168
+
+GET {{Quarry.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

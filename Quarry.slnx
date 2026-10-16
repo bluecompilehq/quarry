@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Quarry.Api/Quarry.Api.csproj" />
+    <Project Path="src/Quarry.Core/Quarry.Core.csproj" />
+  </Folder>
+</Solution>
