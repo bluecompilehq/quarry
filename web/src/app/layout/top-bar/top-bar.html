@@ -1,1 +1,38 @@
-<p>top-bar works!</p>
+<div class="flex items-center gap-2.5 font-bold text-[15px] tracking-tight">
+  <svg class="text-accent" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M12 2 21 7v10l-9 5-9-5V7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+    <path d="M3 7l9 5 9-5M12 12v10" stroke="currentColor" stroke-width="2" stroke-linejoin="round" opacity=".55" />
+  </svg>
+  Quarry
+</div>
+<nav aria-label="Open queries" class="flex flex-1 min-w-0 items-center gap-1 overflow-x-auto">
+   @for (tab of tabs(); track tab.id) {
+      <button
+      type="button"
+      class="flex items-center gap-2 px-3 py-1.5 rounded-lg border text-sm whitespace-nowrap transition-colors"
+      [class]="tab.id === activeTabId()
+        ? 'bg-raised border-line text-text'
+        : 'border-transparent text-muted hover:text-text'"
+      [attr.aria-current]="tab.id === activeTabId() ? 'page' : null"
+      (click)="activeTabId.set(tab.id)">
+      @if (tab.id === activeTabId()) {
+        <span class="size-1.5 rounded-full bg-accent"></span>
+      }
+      {{ tab.title }}
+    </button>
+   } 
+   <button
+    type="button"
+    class="p-2 rounded-lg text-muted hover:text-text hover:bg-raised"
+    aria-label="New query"
+    (click)="AddTab()">
+    <lucide-icon [img]="PlusIcon" class="size-4" />
+  </button>
+</nav>
+<button
+  type="button"
+  class="flex items-center gap-2.5 w-72 px-3 py-2 rounded-xl bg-ink border border-line text-muted text-sm hover:border-accent/50">
+  <lucide-icon [img]="SearchIcon" class="size-4" />
+  <span class="flex-1 text-left">Search tables, queries, commands</span>
+  <kbd class="font-mono text-[11px] px-1.5 py-0.5 rounded-md bg-raised border border-line">Ctrl K</kbd>
+</button>
